@@ -19,7 +19,7 @@ class SignupButton extends StatelessWidget{
       child: MaterialButton(
         onPressed: (() {
           Navigator.push(context,
-          MaterialPageRoute(builder: (context) => LoginPage())
+          MaterialPageRoute(builder: (context) => LoginScreen())
           );
         }),
         child: Text(

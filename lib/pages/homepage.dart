@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State <HomePage> {
-  List<bool> isFavoriteList = List.filled(20, false);
+  List<bool> isFavoriteList = [];
   List<String>favoriteImageUrls = [];
 
   Future<void> _downloadImage(String imageURL) async {
@@ -104,7 +104,14 @@ class _HomePageState extends State <HomePage> {
             return Text('Hata: $snapshot.error');
           }
           else{
-            final Map<String, dynamic> data = snapshot.data!;
+            final Map<String, dynamic>? data = snapshot.data as Map<String, dynamic>?;
+
+            if (data == null || data['photos'] == null) {
+              // Veri boşsa işlemleri burada gerçekleştirin
+              return Text('Veri bulunamadı.');
+            }
+
+            isFavoriteList = List.filled(data['photos'].length, false);
             
             return ListView.builder(
                 itemCount: data['photos'].length + 1,
