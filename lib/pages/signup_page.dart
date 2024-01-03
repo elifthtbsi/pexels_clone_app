@@ -177,14 +177,14 @@ class _SignUpState extends State<SignUp> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text('Hata'),
-                                  content: Text('Kullanıcı zaten var!'),
+                                  title: Text('Error'),
+                                  content: Text('The username is already in use. Please try another username.'),
                                   actions: [
                                     TextButton(
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      child: Text('Tamam'),
+                                      child: Text('Okay'),
                                     ),
                                   ],
                                 );
@@ -233,7 +233,7 @@ class _SignUpState extends State<SignUp> {
                                     builder: (context) => const LoginScreen()));
                           },
                           child: const Text(
-                            "Login",
+                            "LOGIN",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 25,

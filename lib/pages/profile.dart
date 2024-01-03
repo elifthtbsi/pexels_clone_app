@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pexels_clone_app/pages/login_page.dart';
+import 'package:pexels_clone_app/providers/user_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -11,6 +13,8 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   String username = 'kullanıcı adı';
   String password = 'şifre';
+
+  
 
   // Simüle edilmiş bir çıkış işlemi
   void logOut() {
@@ -38,6 +42,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    String? username = Provider.of<UserProvider>(context).username;
+    String? password= Provider.of<UserProvider>(context).password;
+
     return Scaffold(
       backgroundColor: Colors.blue.shade200,
       body: SafeArea(
@@ -45,16 +53,29 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             children: [
               const SizedBox(height: 100),
-              CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('assets/profile_image.jpg'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                   Image.asset(
+                    "/home/elifthtbsi/Desktop/flutter_project/pexels_clone_app/assets/images/black_logo.png",
+                    width:100,
+                  ),
+                   SizedBox(width: 20,),
+                  Text('Pixels',
+                    style: TextStyle( 
+                    color: Colors.black,
+                    fontSize: 60,
+                    fontWeight: FontWeight.bold,
+                    )
+                  ),
+                ],
               ),
               SizedBox(height: 70),
               Text(
                 'Username: $username',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -63,7 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 'Password: $password',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),

@@ -16,7 +16,7 @@ class _MyAppState extends State <Overview> {
   List<Widget> _pages = [
     HomePage(),
     SearchPage(),
-    FavoritesPage(favoriteImageUrls: [],),
+    FavoritesPage(),
     ProfilePage(),
   ];
 
@@ -30,19 +30,6 @@ class _MyAppState extends State <Overview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text(
-            'Pixels',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.grey.shade600,
-              fontSize: 25,
-
-            ),
-          ),
-          iconTheme: IconThemeData (color: Colors.grey.shade600),
-        ),
         body: _pages[_selectedIndex],
           bottomNavigationBar: BottomNavigationBar(
             items: <BottomNavigationBarItem> [

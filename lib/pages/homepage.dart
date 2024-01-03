@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pexels_clone_app/pages/favorites_page.dart';
+import 'package:pexels_clone_app/providers/photo_provider.dart';
+import 'package:provider/provider.dart';
 import 'homepage_request.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io' ;
@@ -11,8 +12,6 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State <HomePage> {
-  List<bool> isFavoriteList = [];
-  List<String>favoriteImageUrls = [];
 
   Future<void> _downloadImage(String imageURL) async {
     final response = await http.get(Uri.parse(imageURL));
@@ -45,7 +44,7 @@ class _HomePageState extends State <HomePage> {
       builder: (BuildContext context){
         return AlertDialog(
           title: Text('Download Successful'),
-          content: Text('The image was successfully downloaded and saved'),
+          content: Text('The image was successfully downloaded and saved!'),
           actions: <Widget>[
             TextButton(
               onPressed: (){
@@ -79,20 +78,14 @@ class _HomePageState extends State <HomePage> {
     );
   }
 
-  void _navigateToFavoritePage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => FavoritesPage(
-          favoriteImageUrls: favoriteImageUrls,
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title:Text('Homepage'),
+        backgroundColor: Colors.grey.shade500,
+      ),
       backgroundColor: Colors.blue.shade200,
       body: FutureBuilder(
         future: fetchData(),
@@ -111,7 +104,6 @@ class _HomePageState extends State <HomePage> {
               return Text('Veri bulunamadı.');
             }
 
-            isFavoriteList = List.filled(data['photos'].length, false);
             
             return ListView.builder(
                 itemCount: data['photos'].length + 1,
@@ -174,7 +166,8 @@ class _HomePageState extends State <HomePage> {
                     );
                   }
                   
-                  final imageURL = data['photos'][index - 1]['src']['large'];
+                  final photoId = index - 1;
+                  final imageURL = data['photos'][photoId]['src']['large'];
 
           
                   return Column(
@@ -191,18 +184,20 @@ class _HomePageState extends State <HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               IconButton(
-                                icon: isFavoriteList[index - 1]
+                                icon: Provider.of<PhotoProvider>(context).isPhotoFavorite(imageURL)
                                 ? Icon(Icons.favorite, color: Colors.red, size: 40)
                                 : Icon(Icons.favorite_border, color: Colors.grey.shade600, size: 40),
                                 onPressed: () {
                                   setState(() {
-                                    isFavoriteList[index - 1] = !isFavoriteList[index -1];
-                                    if (isFavoriteList[index - 1]) {
-                                      favoriteImageUrls.add(imageURL);
-                                    }
-                                    else{
-                                      favoriteImageUrls.remove(imageURL);
-                                    }
+                                    bool isFavorite = Provider.of<PhotoProvider>(context, listen: false).isPhotoFavorite(imageURL);
+                                    if (isFavorite) {
+                                      Provider.of<PhotoProvider>(context, listen: false).removeFavoritePhoto(imageURL);
+                                    } else {
+                                      Provider.of<PhotoProvider>(context, listen: false).addFavoritePhoto(
+                                        Photo(imageUrl: imageURL)
+                                      );
+                                    }  
+                                    
                                   });
                                 },
                               ),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pexels_clone_app/JsonModels/users.dart';
 import 'package:pexels_clone_app/pages/overview.dart';
+import 'package:pexels_clone_app/pages/profile.dart';
 import 'package:pexels_clone_app/pages/signup_page.dart';
 import 'package:pexels_clone_app/SQLite/sqlite.dart';
+import 'package:pexels_clone_app/providers/user_provider.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen();
@@ -38,29 +41,21 @@ class _LoginScreenState extends State<LoginScreen> {
       loggedInUser = Users(usrName: username.text, usrPassword: password.text);
 
       if (!mounted) return;
+
+     Provider.of<UserProvider>(context, listen: false).setUser(username.text, password.text);
+
+
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) =>  Overview()));
+          context, MaterialPageRoute(builder: (context) =>  Overview()
+          
+          ));
     } else {
       setState(() {
         isLoginTrue = true;
       });
     }
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
+              
   //We have to create global key for our form
   final formKey = GlobalKey<FormState>();
   @override
@@ -76,7 +71,6 @@ class _LoginScreenState extends State<LoginScreen> {
               key: formKey,
               child: Column(
                 children: [
-                  //Username field
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -98,6 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 
+                  //Username field
 
                   const SizedBox(height: 15),
                   Container(

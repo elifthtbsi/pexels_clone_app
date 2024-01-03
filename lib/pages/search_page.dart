@@ -25,6 +25,10 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Search Page'),
+        backgroundColor: Colors.grey.shade500,
+      ),
       backgroundColor: Colors.blue.shade200,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
