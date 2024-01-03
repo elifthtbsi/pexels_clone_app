@@ -100,7 +100,6 @@ class _HomePageState extends State <HomePage> {
             final Map<String, dynamic>? data = snapshot.data as Map<String, dynamic>?;
 
             if (data == null || data['photos'] == null) {
-              // Veri boşsa işlemleri burada gerçekleştirin
               return Text('Veri bulunamadı.');
             }
 
@@ -204,7 +203,6 @@ class _HomePageState extends State <HomePage> {
 
                               Container(
                                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-                                //margin: EdgeInsets.symmetric(horizontal: ),
                                 decoration: BoxDecoration(
                                   color: Colors.grey.shade600,
                                   borderRadius: BorderRadius.circular(10)  

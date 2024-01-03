@@ -23,7 +23,6 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue.shade200,
-      //SingleChildScrollView to have an scrol in the screen
       body: Center(
         child: SingleChildScrollView(
           child: Form(
@@ -33,7 +32,6 @@ class _SignUpState extends State<SignUp> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  //We will copy the previous textfield we designed to avoid time consuming
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -52,7 +50,6 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),                                                                                           
-                  //As we assigned our controller to the textformfields
 
                   Container(
                     margin: EdgeInsets.all(8),
@@ -102,9 +99,7 @@ class _SignUpState extends State<SignUp> {
                           hintText: "Password",
                           suffixIcon: IconButton(
                               onPressed: () {
-                                //In here we will create a click to show and hide the password a toggle button
                                 setState(() {
-                                  //toggle button
                                   isVisible = !isVisible;
                                 });
                               },
@@ -114,8 +109,6 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
 
-                  //Confirm Password field
-                  // Now we check whether password matches or not
                   Container(
                     margin: const EdgeInsets.all(8),
                     padding:
@@ -141,9 +134,7 @@ class _SignUpState extends State<SignUp> {
                           hintText: "Password",
                           suffixIcon: IconButton(
                               onPressed: () {
-                                //In here we will create a click to show and hide the password a toggle button
                                 setState(() {
-                                  //toggle button
                                   isVisible = !isVisible;
                                 });
                               },
@@ -168,11 +159,9 @@ class _SignUpState extends State<SignUp> {
                         if (formKey.currentState!.validate()) {
                           final db = DatabaseHelper();
                   
-                          // Kullanıcının varlığını kontrol et
                           final isUserAlreadyExists = await db.isUserExists(username.text);
                   
                           if (isUserAlreadyExists) {
-                            // Kullanıcı zaten var, AlertDialog göster
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
@@ -191,11 +180,9 @@ class _SignUpState extends State<SignUp> {
                               },
                             );
                           } else {
-                            // Yeni kullanıcıyı ekleyin
                             await db
                                 .signup(Users(usrName: username.text, usrPassword: password.text))
                                 .whenComplete(() {
-                              // Başarılı kullanıcı oluşturulduktan sonra giriş ekranına git
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) => const LoginScreen()),
@@ -226,7 +213,6 @@ class _SignUpState extends State<SignUp> {
 
                       TextButton(
                           onPressed: () {
-                            //Navigate to sign up
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

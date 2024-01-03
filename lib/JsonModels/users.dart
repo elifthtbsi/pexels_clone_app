@@ -1,5 +1,3 @@
-// To parse this JSON data, do
-
 class Users {
     final int? usrId;
     final String usrName;

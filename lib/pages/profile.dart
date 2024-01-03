@@ -16,27 +16,19 @@ class _ProfilePageState extends State<ProfilePage> {
 
   
 
-  // Simüle edilmiş bir çıkış işlemi
   void logOut() {
-    // Burada gerçek bir oturum kapatma işlemi gerçekleştirilebilir.
-    // Örneğin, kullanıcı bilgilerini temsil eden değişkenleri sıfırlayabilir veya bir oturum yöneticisi kullanabilirsiniz.
-    // Bu örnekte, sadece örnek verileri sıfırlıyoruz.
     setState(() {
       username = '';
       password = '';
     });
 
-    // Çıkış işlemi tamamlandığında giriş sayfasına yönlendirme yapılır
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginScreen()),
     );
   }
 
-  // Pixels Hakkında sayfasına yönlendirme işlemi
   void navigateToPixelsAbout() {
-    // Pexels web sitesine yönlendirme yapılır
-    // ignore: deprecated_member_use
     launch('https://www.pexels.com/');
   }
 

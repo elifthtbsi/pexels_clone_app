@@ -37,7 +37,6 @@ class FavoritesPage extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.favorite, color: Colors.red, size: 40),
                         onPressed: () {
-                          // Favori fotoğrafı kaldırmak istediğinizde
                           Provider.of<PhotoProvider>(context, listen: false)
                               .removeFavoritePhoto(favoritePhotos[index].imageUrl);
                         },
