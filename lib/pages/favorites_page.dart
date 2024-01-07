@@ -11,14 +11,14 @@ class DownloadHelper {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Download Successful'),
-          content: Text('The image was successfully downloaded and saved!'),
+          title: const Text('Download Successful'),
+          content: const Text('The image was successfully downloaded and saved!'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Okay :)'),
+              child: const Text('Okay :)'),
             ),
           ],
         );
