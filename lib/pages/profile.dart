@@ -100,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade600),
                 ),
                 child: Text(
-                  'Hakkında',
+                  'About',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16),

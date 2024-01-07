@@ -75,7 +75,6 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
 
-                  //Password field
                   Container(
                     margin: const EdgeInsets.all(8),
                     padding:
@@ -146,7 +145,6 @@ class _SignUpState extends State<SignUp> {
 
                   const SizedBox(height: 10),
                   
-                  //Login button
                   Container(
                     height: 55,
                     width: MediaQuery.of(context).size.width * .9,
@@ -200,7 +198,6 @@ class _SignUpState extends State<SignUp> {
 
                   SizedBox(height: 25,),
 
-                  //Sign up button
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

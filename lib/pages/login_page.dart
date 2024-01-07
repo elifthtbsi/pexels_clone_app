@@ -83,7 +83,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 
-                  //Username field
 
                   const SizedBox(height: 15),
                   Container(
@@ -110,7 +109,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
 
-                  //Password field
                   Container(
                     margin: const EdgeInsets.all(8),
                     padding:
@@ -145,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
 
                   const SizedBox(height: 10),
-                  //Login button
+                  
                   Container(
                     height: 55,
                     width: MediaQuery.of(context).size.width * .9,
@@ -166,7 +164,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   SizedBox(height: 25,),
 
-                  //Sign up button
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
