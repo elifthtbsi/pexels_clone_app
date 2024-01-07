@@ -66,8 +66,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                       Image.asset(
-                        "/home/elifthtbsi/Desktop/flutter_project/pexels_clone_app/assets/images/white_logo.png",
+                      Image.asset(
+                        "/home/elifthtbsi/Desktop/projects_for_school/flutter_project/pexels_clone_app/assets/images/white_logo.png",
                         width:100,
                       ),
 

@@ -49,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                    Image.asset(
-                    "/home/elifthtbsi/Desktop/flutter_project/pexels_clone_app/assets/images/black_logo.png",
+                    "/home/elifthtbsi/Desktop/projects_for_school/flutter_project/pexels_clone_app/assets/images/black_logo.png",
                     width:100,
                   ),
                    SizedBox(width: 20,),
