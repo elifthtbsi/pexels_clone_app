@@ -100,15 +100,8 @@ class FavoritesPage extends StatelessWidget {
                     ),
                   ),
                   subtitle: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
-                        icon: Icon(Icons.favorite, color: Colors.red, size: 40),
-                        onPressed: () {
-                          Provider.of<PhotoProvider>(context, listen: false)
-                              .removeFavoritePhoto(favoritePhotos[index].imageUrl);
-                        },
-                      ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
                         decoration: BoxDecoration(
